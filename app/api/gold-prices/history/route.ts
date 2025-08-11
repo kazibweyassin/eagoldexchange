@@ -1,4 +1,26 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse }    // If no historical data, generate mock data
+    if (chartData.length === 0) {
+      // Define the type for our data points
+      interface PriceDataPoint {
+        timestamp: string;
+        price: number;
+        date: string;
+      }
+      
+      // Initialize mockData with the correct type
+      const mockData: PriceDataPoint[] = [];
+      const basePrice = 2024.50;
+      
+      for (let i = hoursBack; i >= 0; i--) {
+        const date = new Date();
+        date.setHours(date.getHours() - i);
+        
+        mockData.push({
+          timestamp: date.toISOString(),
+          price: basePrice + (Math.random() - 0.5) * 50,
+          date: date.toLocaleDateString(),
+        });
+      }ver";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -36,7 +58,7 @@ export async function GET(request: NextRequest) {
 
     // If no historical data, generate mock data
     if (chartData.length === 0) {
-      const mockData = [];
+      const mockData: { timestamp: string; price: number; date: string }[] = [];
       const basePrice = 2024.50;
       
       for (let i = hoursBack; i >= 0; i--) {
