@@ -4,7 +4,17 @@ import { SidebarNavItem } from "types";
 
 export const sidebarLinks: SidebarNavItem[] = [
   {
-    title: "MENU",
+    title: "TRADING",
+    items: [
+      { href: "/dashboard", icon: "dashboard", title: "Dashboard" },
+      { href: "/dashboard/trades", icon: "barChart", title: "Active Trades" },
+      { href: "/dashboard/portfolio", icon: "package", title: "Portfolio" },
+      { href: "/messages", icon: "messages", title: "Messages" },
+      { href: "/dashboard/market", icon: "lineChart", title: "Market Data" },
+    ],
+  },
+  {
+    title: "ACCOUNT",
     items: [
       {
         href: "/admin",
@@ -12,14 +22,13 @@ export const sidebarLinks: SidebarNavItem[] = [
         title: "Admin Panel",
         authorizeOnly: UserRole.ADMIN,
       },
-      { href: "/dashboard", icon: "dashboard", title: "Dashboard" },
       {
         href: "/dashboard/billing",
         icon: "billing",
         title: "Billing",
         authorizeOnly: UserRole.USER,
       },
-      { href: "/dashboard/charts", icon: "lineChart", title: "Charts" },
+      { href: "/dashboard/settings", icon: "settings", title: "Settings" },
       {
         href: "/admin/orders",
         icon: "package",
@@ -27,28 +36,15 @@ export const sidebarLinks: SidebarNavItem[] = [
         badge: 2,
         authorizeOnly: UserRole.ADMIN,
       },
-      {
-        href: "#/dashboard/posts",
-        icon: "post",
-        title: "User Posts",
-        authorizeOnly: UserRole.USER,
-        disabled: true,
-      },
     ],
   },
   {
-    title: "OPTIONS",
+    title: "RESOURCES",
     items: [
-      { href: "/dashboard/settings", icon: "settings", title: "Settings" },
       { href: "/", icon: "home", title: "Homepage" },
+      { href: "/news", icon: "bookOpen", title: "News & Insights" },
       { href: "/docs", icon: "bookOpen", title: "Documentation" },
-      {
-        href: "#",
-        icon: "messages",
-        title: "Support",
-        authorizeOnly: UserRole.USER,
-        disabled: true,
-      },
+      { href: "/support", icon: "help", title: "Support" },
     ],
   },
 ];

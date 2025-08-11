@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { HeaderSection } from "@/components/shared/header-section";
 import { Icons } from "@/components/shared/icons";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
+import { PriceChart } from "@/components/gold/price-chart";
 
 export default function Features() {
   return (
@@ -56,6 +57,20 @@ export default function Features() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Live Price Chart Section */}
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold mb-4">Live Gold Price Monitoring</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Track real-time gold prices with advanced charting tools and market analytics. 
+                Our platform provides instant access to live market data for informed trading decisions.
+              </p>
+            </div>
+            <div className="max-w-4xl mx-auto">
+              <PriceChart timeRange="15m" height={350} showArea className="shadow-lg" />
+            </div>
           </div>
         </MaxWidthWrapper>
       </div>

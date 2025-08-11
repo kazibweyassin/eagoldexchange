@@ -1,12 +1,11 @@
 import { getCurrentUser } from "@/lib/session";
 import { constructMetadata } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { DashboardHeader } from "@/components/dashboard/header";
-import { EmptyPlaceholder } from "@/components/shared/empty-placeholder";
+import { TradingDashboard } from "@/components/dashboard/trading-dashboard";
 
 export const metadata = constructMetadata({
-  title: "Dashboard – SaaS Starter",
-  description: "Create and manage content.",
+  title: "Dashboard – East African Gold Exchange",
+  description: "Your personalized gold trading dashboard.",
 });
 
 export default async function DashboardPage() {
@@ -15,17 +14,12 @@ export default async function DashboardPage() {
   return (
     <>
       <DashboardHeader
-        heading="Dashboard"
-        text={`Current Role : ${user?.role} — Change your role in settings.`}
+        heading="Gold Trading Dashboard"
+        text={`Welcome back, ${user?.name}. Monitor live prices and manage your trades.`}
       />
-      <EmptyPlaceholder>
-        <EmptyPlaceholder.Icon name="post" />
-        <EmptyPlaceholder.Title>No content created</EmptyPlaceholder.Title>
-        <EmptyPlaceholder.Description>
-          You don&apos;t have any content yet. Start creating content.
-        </EmptyPlaceholder.Description>
-        <Button>Add Content</Button>
-      </EmptyPlaceholder>
+      <div className="container mx-auto px-4 py-8">
+        <TradingDashboard />
+      </div>
     </>
   );
 }

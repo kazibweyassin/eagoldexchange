@@ -29,6 +29,9 @@ yarn-error.log*
 .env*.local
 .env
 
+# persistent data files (development)
+/data/
+
 # vercel
 .vercel
 

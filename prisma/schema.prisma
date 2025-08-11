@@ -15,6 +15,25 @@ enum UserRole {
   USER
 }
 
+enum UserType {
+  SUPPLIER
+  BUYER  
+  ADMIN
+}
+
+enum TransactionStatus {
+  INITIATED
+  NEGOTIATING
+  AGREED
+  PAYMENT_PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  COMPLETED
+  DISPUTED
+  CANCELLED
+}
+
 model Account {
   id                String   @id @default(cuid())
   userId            String
@@ -58,6 +77,16 @@ model User {
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @default(now()) @map(name: "updated_at")
   role          UserRole  @default(USER)
+  
+  // Gold Exchange specific fields
+  userType      UserType  @default(BUYER)
+  location      String?
+  phone         String?
+  whatsapp      String?
+  verified      Boolean   @default(false)
+  trustScore    Int       @default(50)
+  businessName  String?
+  licenseNumber String?
 
   accounts Account[]
   sessions Session[]
@@ -66,6 +95,16 @@ model User {
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+
+  // Relations
+  goldListings    GoldListing[]
+  buyerRequests   BuyerRequest[]
+  buyerTransactions    Transaction[] @relation("BuyerTransactions")
+  sellerTransactions   Transaction[] @relation("SellerTransactions")
+  sentMessages    Message[] @relation("MessageSender")
+  receivedMessages Message[] @relation("MessageReceiver")
+  notifications   Notification[]
+  notificationPreferences NotificationPreference?
 
   @@map(name: "users")
 }
@@ -77,4 +116,150 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map(name: "verification_tokens")
+}
+
+model GoldListing {
+  id          String      @id @default(cuid())
+  supplierId  String
+  goldType    String      // Raw, Refined, Dust, etc.
+  purity      Float       // Percentage
+  quantity    Float       // Grams/Ounces
+  pricePerOz  Float
+  location    String
+  available   Boolean     @default(true)
+  certificates String[]   // Document URLs
+  description String?
+  images      String[]    // Image URLs
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  // Relations
+  supplier    User        @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  
+  @@index([supplierId])
+  @@index([available])
+  @@map(name: "gold_listings")
+}
+
+model BuyerRequest {
+  id          String    @id @default(cuid())
+  buyerId     String
+  goldType    String
+  minPurity   Float
+  maxPurity   Float
+  quantity    Float
+  maxPricePerOz Float
+  location    String?
+  timeline    String?
+  description String?
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relations
+  buyer       User      @relation(fields: [buyerId], references: [id], onDelete: Cascade)
+  
+  @@index([buyerId])
+  @@index([active])
+  @@map(name: "buyer_requests")
+}
+
+model Transaction {
+  id           String         @id @default(cuid())
+  buyerId      String
+  sellerId     String
+  goldListingId String
+  quantity     Float
+  totalPrice   Float
+  status       TransactionStatus @default(INITIATED)
+  notes        String?
+  documents    String[]       // Document URLs
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  
+  // Relations
+  buyer        User           @relation("BuyerTransactions", fields: [buyerId], references: [id])
+  seller       User           @relation("SellerTransactions", fields: [sellerId], references: [id])
+  goldListing  GoldListing    @relation(fields: [goldListingId], references: [id])
+  
+  @@index([buyerId])
+  @@index([sellerId])
+  @@index([status])
+  @@map(name: "transactions")
+}
+
+model Message {
+  id         String   @id @default(cuid())
+  senderId   String
+  receiverId String
+  content    String
+  read       Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  
+  // Relations
+  sender     User     @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver   User     @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  
+  @@index([senderId])
+  @@index([receiverId])
+  @@index([read])
+  @@map(name: "messages")
+}
+
+model PriceHistory {
+  id        String   @id @default(cuid())
+  price     Float
+  source    String   // API source
+  currency  String   @default("USD")
+  timestamp DateTime @default(now())
+  
+  @@index([timestamp])
+  @@map(name: "price_history")
+}
+
+enum NotificationType {
+  NEW_LISTING
+  PRICE_ALERT
+  TRANSACTION_UPDATE
+  MESSAGE_RECEIVED
+  VERIFICATION_UPDATE
+  SYSTEM_ALERT
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  message   String
+  data      Json?            // Additional data for the notification
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now())
+  
+  // Relations
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([read])
+  @@index([type])
+  @@index([createdAt])
+  @@map(name: "notifications")
+}
+
+model NotificationPreference {
+  id                String  @id @default(cuid())
+  userId            String  @unique
+  emailNotifications Boolean @default(true)
+  pushNotifications  Boolean @default(true)
+  smsNotifications   Boolean @default(false)
+  newListings       Boolean @default(true)
+  priceAlerts       Boolean @default(true)
+  transactions      Boolean @default(true)
+  messages          Boolean @default(true)
+  
+  // Relations
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map(name: "notification_preferences")
 }

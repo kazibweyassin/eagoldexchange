@@ -5,44 +5,28 @@ import { siteConfig } from "@/config/site";
 import { cn, nFormatter } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/shared/icons";
+import { LivePriceTicker } from "@/components/gold/live-price-ticker";
 
 export default async function HeroLanding() {
-  const { stargazers_count: stars } = await fetch(
-    "https://api.github.com/repos/mickasmt/next-saas-stripe-starter",
-    {
-      ...(env.GITHUB_OAUTH_TOKEN && {
-        headers: {
-          Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      }),
-      // data will revalidate every hour
-      next: { revalidate: 3600 },
-    },
-  )
-    .then((res) => res.json())
-    .catch((e) => console.log(e));
-
   return (
-    <section className="space-y-6 py-12 sm:py-20 lg:py-20">
+    <section className="space-y-6 py-12 sm:py-20 lg:py-20 bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
       <div className="container flex max-w-5xl flex-col items-center gap-5 text-center">
         <Link
-          href="https://twitter.com/miickasmt/status/1810465801649938857"
+          href="/trading"
           className={cn(
             buttonVariants({ variant: "outline", size: "sm", rounded: "full" }),
-            "px-4",
+            "px-4 bg-yellow-100 border-yellow-300 text-yellow-800 hover:bg-yellow-200",
           )}
-          target="_blank"
         >
-          <span className="mr-3">🎉</span>
-          <span className="hidden md:flex">Introducing&nbsp;</span> Next Auth
-          Roles Template on <Icons.twitter className="ml-2 size-3.5" />
+          <span className="mr-3">✨</span>
+          <span className="hidden md:flex">Now Live:&nbsp;</span> 
+          Real-time Gold Trading Platform
         </Link>
 
         <h1 className="text-balance font-urban text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-[66px]">
-          Kick off with a bang with{" "}
-          <span className="text-gradient_indigo-purple font-extrabold">
-            SaaS Starter
+          East African{" "}
+          <span className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 bg-clip-text text-transparent font-extrabold">
+            Gold Exchange
           </span>
         </h1>
 
@@ -50,8 +34,9 @@ export default async function HeroLanding() {
           className="max-w-2xl text-balance leading-normal text-muted-foreground sm:text-xl sm:leading-8"
           style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
         >
-          Build your next project using Next.js 14, Prisma, Neon, Auth.js v5,
-          Resend, React Email, Shadcn/ui, Stripe.
+          Connect Congolese gold suppliers with international buyers. 
+          Real-time market data, secure transactions, and trusted partnerships 
+          in the East African gold market.
         </p>
 
         <div
@@ -59,35 +44,50 @@ export default async function HeroLanding() {
           style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
         >
           <Link
-            href="/pricing"
+            href="/trading"
             prefetch={true}
             className={cn(
               buttonVariants({ size: "lg", rounded: "full" }),
-              "gap-2",
+              "gap-2 bg-yellow-600 hover:bg-yellow-700",
             )}
           >
-            <span>Go Pricing</span>
+            <span>Start Trading</span>
             <Icons.arrowRight className="size-4" />
           </Link>
           <Link
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noreferrer"
+            href="/dashboard"
             className={cn(
               buttonVariants({
                 variant: "outline",
                 size: "lg",
                 rounded: "full",
               }),
-              "px-5",
+              "px-5 border-yellow-300 text-yellow-800 hover:bg-yellow-50",
             )}
           >
-            <Icons.gitHub className="mr-2 size-4" />
-            <p>
-              <span className="hidden sm:inline-block">Star on</span> GitHub{" "}
-              <span className="font-semibold">{nFormatter(stars)}</span>
-            </p>
+            <Icons.barChart className="mr-2 size-4" />
+            <span>Market Dashboard</span>
           </Link>
+        </div>
+
+        <div className="mt-8 flex items-center space-x-6 text-sm text-muted-foreground">
+          <div className="flex items-center space-x-2">
+            <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span>Live market data</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
+            <span>Verified suppliers</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="h-2 w-2 bg-yellow-500 rounded-full"></div>
+            <span>Secure transactions</span>
+          </div>
+        </div>
+
+        {/* Live Price Ticker */}
+        <div className="w-full max-w-6xl mt-12">
+          <LivePriceTicker />
         </div>
       </div>
     </section>

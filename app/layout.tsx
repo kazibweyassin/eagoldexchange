@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@/components/analytics";
 import ModalProvider from "@/components/modals/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { GoldPriceProvider } from "@/contexts/gold-price-context";
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -36,10 +37,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             enableSystem
             disableTransitionOnChange
           >
-            <ModalProvider>{children}</ModalProvider>
-            <Analytics />
-            <Toaster richColors closeButton />
-            <TailwindIndicator />
+            <GoldPriceProvider>
+              <ModalProvider>{children}</ModalProvider>
+              <Analytics />
+              <Toaster richColors closeButton />
+              <TailwindIndicator />
+            </GoldPriceProvider>
           </ThemeProvider>
         </SessionProvider>
       </body>

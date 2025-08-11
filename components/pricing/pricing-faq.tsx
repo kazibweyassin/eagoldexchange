@@ -10,33 +10,39 @@ import { HeaderSection } from "../shared/header-section";
 const pricingFaqData = [
   {
     id: "item-1",
-    question: "What is the cost of the free plan?",
+    question: "Is there a cost to browse gold listings?",
     answer:
-      "Our free plan is completely free, with no monthly or annual charges. It's a great way to get started and explore our basic features.",
+      "Browsing gold listings and market data is completely free. You can view live prices, supplier listings, and market intelligence without any charges.",
   },
   {
     id: "item-2",
-    question: "How much does the Basic Monthly plan cost?",
+    question: "What are the trading fees for suppliers?",
     answer:
-      "The Basic Monthly plan is priced at $15 per month. It provides access to our core features and is billed on a monthly basis.",
+      "Suppliers pay a 2.5% commission on successful transactions. This includes listing management, buyer connection services, and secure payment processing.",
   },
   {
     id: "item-3",
-    question: "What is the price of the Pro Monthly plan?",
+    question: "How much do buyers pay for transactions?",
     answer:
-      "The Pro Monthly plan is available for $25 per month. It offers advanced features and is billed on a monthly basis for added flexibility.",
+      "Buyers pay a 1.5% transaction fee on purchases. This covers verification services, secure escrow, and quality assurance for all gold transactions.",
   },
   {
     id: "item-4",
-    question: "Do you offer any annual subscription plans?",
+    question: "Do you offer premium memberships?",
     answer:
-      "Yes, we offer annual subscription plans for even more savings. The Basic Annual plan is $144 per year, and the Pro Annual plan is $300 per year.",
+      "Yes, we offer Premium memberships for $99/month (suppliers) and $49/month (buyers) with reduced fees, priority support, and advanced market analytics.",
   },
   {
     id: "item-5",
-    question: "Is there a trial period for the paid plans?",
+    question: "What payment methods do you accept?",
     answer:
-      "We offer a 14-day free trial for both the Pro Monthly and Pro Annual plans. It's a great way to experience all the features before committing to a paid subscription.",
+      "We accept bank transfers, letter of credit (LC), escrow services, and verified digital payments. All transactions are secured and monitored for compliance.",
+  },
+  {
+    id: "item-6",
+    question: "Are there any hidden fees?",
+    answer:
+      "No hidden fees. All costs are transparent upfront. Additional services like expedited verification or premium logistics partnerships have clearly stated optional fees.",
   },
 ];
 
@@ -44,11 +50,11 @@ export function PricingFaq() {
   return (
     <section className="container max-w-4xl py-2">
       <HeaderSection
-        label="FAQ"
+        label="Trading FAQ"
         title="Frequently Asked Questions"
-        subtitle="Explore our comprehensive FAQ to find quick answers to common
-          inquiries. If you need further assistance, don't hesitate to
-          contact us for personalized help."
+        subtitle="Learn about our transparent pricing, trading fees, and membership options. 
+          For specific inquiries about large volume transactions or custom solutions, 
+          contact our trading specialists."
       />
 
       <Accordion type="single" collapsible className="my-12 w-full">
