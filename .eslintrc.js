@@ -1,4 +1,4 @@
-{
+module.exports = {
   "$schema": "https://json.schemastore.org/eslintrc",
   "root": true,
   "extends": [
@@ -16,7 +16,6 @@
     "tailwindcss/migration-from-tailwind-2": "off",
     "react/no-unescaped-entities": "off"
   },
-  "ignorePatterns": ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.json", "**/*.mdx"],
   "settings": {
     "tailwindcss": {
       "callees": ["cn"],
