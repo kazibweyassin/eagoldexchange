@@ -87,9 +87,10 @@ export default function ContentProtection({
     // Disable text selection via CSS
     if (!allowTextSelection) {
       document.body.style.userSelect = "none";
-      document.body.style.webkitUserSelect = "none";
-      document.body.style.mozUserSelect = "none";
-      document.body.style.msUserSelect = "none";
+      // Use type assertion for vendor-specific properties
+      (document.body.style as any).webkitUserSelect = "none";
+      (document.body.style as any).mozUserSelect = "none";
+      (document.body.style as any).msUserSelect = "none";
     }
 
     // Add event listeners
@@ -130,9 +131,10 @@ export default function ContentProtection({
 
       // Reset user select
       document.body.style.userSelect = "";
-      document.body.style.webkitUserSelect = "";
-      document.body.style.mozUserSelect = "";
-      document.body.style.msUserSelect = "";
+      // Use type assertion for vendor-specific properties
+      (document.body.style as any).webkitUserSelect = "";
+      (document.body.style as any).mozUserSelect = "";
+      (document.body.style as any).msUserSelect = "";
     };
   }, [allowRightClick, allowTextSelection, allowImageDrag, level]);
 
