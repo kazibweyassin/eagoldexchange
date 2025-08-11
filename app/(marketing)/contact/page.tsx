@@ -77,7 +77,7 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
+                  <Input id="phone" type="tel" placeholder="+256 704 833 021" />
                 </div>
 
                 <div className="space-y-2">
@@ -161,7 +161,7 @@ export default function ContactPage() {
                   <Phone className="h-6 w-6 text-green-600 mt-1" />
                   <div>
                     <h4 className="font-semibold">Phone</h4>
-                    <p className="text-muted-foreground">+254 (0) 700 123 456</p>
+                    <p className="text-muted-foreground">+256 704 833 021</p>
                     <p className="text-sm text-muted-foreground">Mon-Fri, 8AM-6PM EAT</p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6 text-blue-600 mt-1" />
                   <div>
                     <h4 className="font-semibold">Office</h4>
-                    <p className="text-muted-foreground">Nairobi, Kenya</p>
+                    <p className="text-muted-foreground">Kampala, Uganda</p>
                     <p className="text-sm text-muted-foreground">Regional headquarters</p>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
                   <HeadphonesIcon className="h-6 w-6 text-purple-600 mt-1" />
                   <div>
                     <h4 className="font-semibold">24/7 Trading Support</h4>
-                    <p className="text-muted-foreground">+254 (0) 700 GOLD (4653)</p>
+                    <p className="text-muted-foreground">+256 704 833 021</p>
                     <p className="text-sm text-muted-foreground">Emergency trading assistance</p>
                   </div>
                 </div>
