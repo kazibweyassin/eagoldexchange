@@ -17,7 +17,6 @@ import {
   Smile,
   Shield,
   Star,
-  Online
 } from "lucide-react";
 
 export function MessagingCenter() {
@@ -153,7 +152,7 @@ export function MessagingCenter() {
             <div>
               <h4 className="font-medium">Golden Horizons Mining</h4>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Online className="h-3 w-3 text-green-500" />
+                <span className="inline-block h-3 w-3 rounded-full bg-green-500 align-middle mr-1" />
                 <span>Online</span>
                 <span>•</span>
                 <Shield className="h-3 w-3 text-green-600" />
