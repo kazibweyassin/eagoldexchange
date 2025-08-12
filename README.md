@@ -1,119 +1,200 @@
-<a href="https://next-saas-stripe-starter.vercel.app">
-  <img alt="SaaS Starter" src="public/_static/og.jpg">
-  <h1 align="center">Next SaaS Stripe Starter</h1>
+<a href="https://eagoldexchange.live">
+  <img alt="East African Gold Exchange" src="https://eagoldexchange.live/_static/og.jpg" width="100%">
+  <h1 align="center">East African Gold Exchange</h1>
 </a>
 
 <p align="center">
-  Start at full speed with SaaS Starter !
+  A comprehensive digital platform for gold trading in East Africa
 </p>
 
 <p align="center">
-  <a href="https://twitter.com/miickasmt">
-    <img src="https://img.shields.io/twitter/follow/miickasmt?style=flat&label=miickasmt&logo=twitter&color=0bf&logoColor=fff" alt="Mickasmt Twitter follower count" />
+  <a href="https://eagoldexchange.live">
+    <img src="https://img.shields.io/badge/website-eagoldexchange.live-FFD700?style=flat&logo=safari&logoColor=fff" alt="East African Gold Exchange Website" />
+  </a>
+</p>
+
+## Market Opportunity
+
+The East African gold market represents a significant opportunity:
+
+- **Growing Production**: East Africa is experiencing increasing gold production, with Tanzania, Kenya, Ethiopia, and Uganda as key producers.
+- **Limited Digital Infrastructure**: The gold trading market in East Africa remains predominantly analog, with limited technological solutions.
+- **Transparency Challenges**: Traditional trading lacks transparency in pricing, quality assessment, and verification.
+- **Rising Investment Interest**: Growing regional and international interest in East African gold assets.
+- **Mobile Penetration**: High mobile phone adoption rates provide a strong foundation for digital platform adoption.
+
+EAGOLD positions itself at the intersection of these trends, providing a much-needed technological solution to modernize gold trading in the region.
+
+## Future Roadmap
+
+The platform development roadmap includes:
+
+- **Mobile Application**: Dedicated apps for iOS and Android
+- **AI-Powered Analytics**: Predictive models for gold price trends
+- **Blockchain Integration**: Enhanced transparency through distributed ledger
+- **Regional Expansion**: Growth into additional African markets
+- **Gold-Backed Tokens**: Digital assets backed by physical gold
+- **Financial Services**: Financing options for miners and suppliers
+
+## Acknowledgements
+
+This project builds upon the excellent foundation of several open-source projects:
+
+- [Next.js](https://nextjs.org/) by Vercel
+- [Shadcn UI](https://ui.shadcn.com/) component system
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- [Prisma](https://www.prisma.io/) for database operations
+- [NextAuth.js](https://next-auth.js.org/) for authentication
+
+Special thanks to the open-source community for making these tools available.
+</a>
+
+<p align="center">
+  A comprehensive digital platform for gold trading in East Africa
+</p>
+
+<p align="center">
+  <a href="https://eagoldexchange.live">
+    <img src="https://img.shields.io/badge/website-eagoldexchange.live-FFD700?style=flat&logo=safari&logoColor=fff" alt="East African Gold Exchange Website" />
   </a>
 </p>
 
 <p align="center">
-  <a href="#introduction"><strong>Introduction</strong></a> ·
+  <a href="#project-overview"><strong>Project Overview</strong></a> ·
+  <a href="#key-features"><strong>Key Features</strong></a> ·
+  <a href="#technical-stack"><strong>Technical Stack</strong></a> ·
   <a href="#installation"><strong>Installation</strong></a> ·
-  <a href="#tech-stack--features"><strong>Tech Stack + Features</strong></a> ·
-  <a href="#author"><strong>Author</strong></a> ·
-  <a href="#credits"><strong>Credits</strong></a>
+  <a href="#business-model"><strong>Business Model</strong></a>
 </p>
 <br/>
 
-## Introduction
+## Project Overview
 
-Empower your next project with the stack of Next.js 14, Prisma, Neon, Auth.js v5, Resend, React Email, Shadcn/ui, and Stripe.
-<br/>
-All seamlessly integrated with the SaaS Starter to accelerate your development and saas journey.
+East African Gold Exchange (EAGOLD) is a comprehensive digital platform designed to facilitate gold trading, investment, and market intelligence specifically focused on the East African region. The platform bridges the gap between gold miners, suppliers, buyers, and investors, providing a secure and transparent marketplace for gold transactions.
+
+The platform aims to revolutionize gold trading in East Africa by digitizing traditionally analog processes and creating transparency in a market that has historically lacked technological infrastructure.
+
+## Key Features
+
+- **Gold Marketplace**: Connect gold miners and suppliers directly with buyers and investors
+- **Live Market Intelligence**: Real-time gold price tracking and trend analysis
+- **Secure Transactions**: Verified users and secure payment processing
+- **Supplier & Buyer Profiles**: Dedicated areas for both sides of the transaction
+- **Notification System**: Stay updated on price changes and transaction status
+- **Administrative Dashboard**: Comprehensive management interface
+- **Authentication & Authorization**: Secure user accounts with role-based access
+
+## Technical Stack
+
+The East African Gold Exchange platform is built on a modern, scalable technology stack:
+
+- **Frontend**: Next.js 14 with React and TypeScript
+- **Styling**: Tailwind CSS with custom gold-themed design system
+- **Database**: PostgreSQL via Prisma ORM (hosted on Neon.tech)
+- **Authentication**: NextAuth.js with multiple providers
+- **Deployment**: Vercel with continuous integration
+- **APIs**: RESTful endpoints for gold prices and marketplace interactions
+- **Email**: React Email templates with Resend
 
 ## Installation
 
-Clone & create this repo locally with the following command:
+### Prerequisites
 
-```bash
-npx create-next-app my-saas-project --example "https://github.com/mickasmt/next-saas-stripe-starter"
-```
+- Node.js 18.x or later
+- PostgreSQL database (or Neon.tech account)
+- Stripe account for payment processing
+- Resend account for email functionality
 
-Or, deploy with Vercel:
+### Setup Steps
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmickasmt%2Fnext-saas-stripe-starter)
-
-### Steps
-
-1. Install dependencies using pnpm:
+1. Clone the repository:
 
 ```sh
+git clone https://github.com/yourusername/eagoldexchange.git
+cd eagoldexchange
+```
+
+2. Install dependencies:
+
+```sh
+npm install
+# or
 pnpm install
 ```
 
-2. Copy `.env.example` to `.env.local` and update the variables.
+3. Configure environment variables:
 
 ```sh
 cp .env.example .env.local
 ```
 
-3. Start the development server:
+4. Update `.env.local` with your specific credentials:
+   - Database connection string
+   - Auth provider credentials
+   - Stripe API keys
+   - Resend API key
+
+5. Run database migrations:
 
 ```sh
-pnpm run dev
+npx prisma migrate dev
 ```
 
-> [!NOTE]  
-> I use [npm-check-updates](https://www.npmjs.com/package/npm-check-updates) package for update this project.
->
-> Use this command for update your project: `ncu -i --format group`
+6. Start the development server:
 
-## Roadmap
-- [ ] Upgrade eslint to v9
-- [ ] Add resend for success subscriptions
+```sh
+npm run dev
+# or
+pnpm dev
+```
 
-## Tech Stack + Features
+## Business Model
 
-https://github.com/mickasmt/next-saas-stripe-starter/assets/62285783/828a4e0f-30e3-4cfe-96ff-4dfd9cd55124
+The East African Gold Exchange operates on a multi-faceted business model:
 
-### Frameworks
+## Business Model
 
-- [Next.js](https://nextjs.org/) – React framework for building performant apps with the best developer experience
-- [Auth.js](https://authjs.dev/) – Handle user authentication with ease with providers like Google, Twitter, GitHub, etc.
-- [Prisma](https://www.prisma.io/) – Typescript-first ORM for Node.js
-- [React Email](https://react.email/) – Versatile email framework for efficient and flexible email development
+The East African Gold Exchange operates on a multi-faceted business model:
 
-### Platforms
+1. **Transaction Fees**: A small percentage fee on each successful gold transaction
+2. **Subscription Plans**: Premium features for serious traders and institutional investors
+3. **Market Intelligence**: Advanced analytics and reports for paid subscribers
+4. **Verification Services**: Enhanced trust through verified supplier and buyer profiles
+5. **Advertising**: Targeted placement for related services (refining, security, logistics)
 
-- [Vercel](https://vercel.com/) – Easily preview & deploy changes with git
-- [Resend](https://resend.com/) – A powerful email framework for streamlined email development
-- [Neon](https://neon.tech/) – Serverless Postgres with autoscaling, branching, bottomless storage and generous free tier.
+The platform creates value by bringing transparency, security, and efficiency to the East African gold market, traditionally fragmented and opaque. By digitizing transactions and providing real-time market data, EAGOLD reduces friction, lowers costs, and expands market access for all participants.
 
-### UI
+## Platform Architecture
 
-- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework for rapid UI development
-- [Shadcn/ui](https://ui.shadcn.com/) – Re-usable components built using Radix UI and Tailwind CSS
-- [Framer Motion](https://framer.com/motion) – Motion library for React to animate components with ease
-- [Lucide](https://lucide.dev/) – Beautifully simple, pixel-perfect icons
-- [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) – Optimize custom fonts and remove external network requests for improved performance
-- [`ImageResponse`](https://nextjs.org/docs/app/api-reference/functions/image-response) – Generate dynamic Open Graph images at the edge
+The East African Gold Exchange platform is built with scalability and reliability in mind:
 
-### Hooks and Utilities
+### Core Components
 
-- `useIntersectionObserver` – React hook to observe when an element enters or leaves the viewport
-- `useLocalStorage` – Persist data in the browser's local storage
-- `useScroll` – React hook to observe scroll position ([example](https://github.com/mickasmt/precedent/blob/main/components/layout/navbar.tsx#L12))
-- `nFormatter` – Format numbers with suffixes like `1.2k` or `1.2M`
-- `capitalize` – Capitalize the first letter of a string
-- `truncate` – Truncate a string to a specified length
-- [`use-debounce`](https://www.npmjs.com/package/use-debounce) – Debounce a function call / state update
+- **Marketplace Engine**: Connects verified buyers and suppliers
+- **Price Tracking System**: Real-time gold price updates with historical data
+- **User Management**: Role-based access control system
+- **Payment Processing**: Secure transaction handling with escrow capabilities 
+- **Notification Service**: Real-time alerts for market changes and transactions
+- **Content Management**: Educational resources about gold trading
 
-### Code Quality
+### Technical Implementation
 
-- [TypeScript](https://www.typescriptlang.org/) – Static type checker for end-to-end typesafety
-- [Prettier](https://prettier.io/) – Opinionated code formatter for consistent code style
-- [ESLint](https://eslint.org/) – Pluggable linter for Next.js and TypeScript
+The platform uses a modern tech stack that includes:
 
-### Miscellaneous
+- **Next.js 14**: Server components for improved performance
+- **Prisma ORM**: Type-safe database queries and migrations
+- **PostgreSQL**: Reliable, scalable database for transaction records
+- **NextAuth.js**: Secure authentication with multiple providers
+- **Tailwind CSS**: Custom gold-themed design system
+- **Stripe**: Payment processing infrastructure
+- **React Email**: Templated notifications and communications
 
-- [Vercel Analytics](https://vercel.com/analytics) – Track unique visitors, pageviews, and more in a privacy-friendly way
+### Security Features
+
+- End-to-end encryption for sensitive data
+- Multi-factor authentication for user accounts
+- Regular security audits and penetration testing
+- Compliance with financial regulations and KYC requirements
 
 ## Author
 

@@ -106,77 +106,97 @@ export function MarketStats() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {/* Current Price */}
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Current Price</CardTitle>
-          <DollarSign className="h-4 w-4 text-yellow-600" />
-        </CardHeader>
-        <CardContent>
+      <div className="overflow-hidden rounded-lg border border-yellow-200 bg-gradient-to-br from-yellow-50 to-white shadow-sm">
+        <div className="flex flex-row items-center justify-between space-y-0 p-6 pb-2">
+          <h3 className="text-sm font-medium">Current Price</h3>
+          <div className="bg-primary/10 rounded-full p-2">
+            <DollarSign className="size-4 text-primary" />
+          </div>
+        </div>
+        <div className="p-6 pt-2">
           <div className="text-2xl font-bold">{formatPrice(goldPrice.price)}</div>
           <div className={cn("flex items-center text-xs", getTrendColor())}>
             {getTrendIcon()}
-            <span className="ml-1">
+            <span className="ml-1 font-medium">
               {goldPrice.change >= 0 ? '+' : ''}
               {formatPrice(Math.abs(goldPrice.change))} ({goldPrice.changePercent >= 0 ? '+' : ''}
               {goldPrice.changePercent.toFixed(2)}%)
             </span>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Volume */}
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">24h Volume</CardTitle>
-          <BarChart3 className="h-4 w-4 text-blue-600" />
-        </CardHeader>
-        <CardContent>
+      <div className="overflow-hidden rounded-lg border border-blue-200 bg-gradient-to-br from-blue-50 to-white shadow-sm">
+        <div className="flex flex-row items-center justify-between space-y-0 p-6 pb-2">
+          <h3 className="text-sm font-medium">24h Volume</h3>
+          <div className="bg-blue-100 rounded-full p-2">
+            <BarChart3 className="size-4 text-blue-600" />
+          </div>
+        </div>
+        <div className="p-6 pt-2">
           <div className="text-2xl font-bold">{formatVolume(goldPrice.volume)}</div>
-          <div className="text-xs text-gray-500">
+          <div className="text-xs text-gray-500 font-medium">
             Avg: {formatVolume(metrics.avgVolume)}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* High/Low */}
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">24h Range</CardTitle>
-          <Activity className="h-4 w-4 text-purple-600" />
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-1">
+      <div className="overflow-hidden rounded-lg border border-purple-200 bg-gradient-to-br from-purple-50 to-white shadow-sm">
+        <div className="flex flex-row items-center justify-between space-y-0 p-6 pb-2">
+          <h3 className="text-sm font-medium">24h Range</h3>
+          <div className="bg-purple-100 rounded-full p-2">
+            <Activity className="size-4 text-purple-600" />
+          </div>
+        </div>
+        <div className="p-6 pt-2">
+          <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-green-600">High:</span>
+              <span className="text-green-600 font-medium">High:</span>
               <span className="font-medium">{formatPrice(goldPrice.high24h)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-red-600">Low:</span>
+              <span className="text-red-600 font-medium">Low:</span>
               <span className="font-medium">{formatPrice(goldPrice.low24h)}</span>
             </div>
+            <div className="relative h-2 w-full rounded-full bg-gray-100 mt-1">
+              <div
+                className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"
+                style={{ width: '100%' }}
+              ></div>
+              <div
+                className="absolute inset-y-0 size-3 -mt-0.5 -ml-1.5 rounded-full bg-white shadow-md border border-gray-300"
+                style={{
+                  left: `${((goldPrice.price - goldPrice.low24h) / (goldPrice.high24h - goldPrice.low24h)) * 100}%`,
+                }}
+              ></div>
+            </div>
           </div>
-          <div className="text-xs text-gray-500 mt-1">
+          <div className="text-xs text-gray-500 mt-2 font-medium">
             Range: {formatPrice(goldPrice.high24h - goldPrice.low24h)}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Volatility */}
-      <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Volatility</CardTitle>
-          <Clock className="h-4 w-4 text-orange-600" />
-        </CardHeader>
-        <CardContent>
+      <div className="overflow-hidden rounded-lg border border-orange-200 bg-gradient-to-br from-orange-50 to-white shadow-sm">
+        <div className="flex flex-row items-center justify-between space-y-0 p-6 pb-2">
+          <h3 className="text-sm font-medium">Volatility</h3>
+          <div className="bg-orange-100 rounded-full p-2">
+            <Clock className="size-4 text-orange-600" />
+          </div>
+        </div>
+        <div className="p-6 pt-2">
           <div className="text-2xl font-bold">{metrics.volatility.toFixed(3)}%</div>
-          <div className="flex items-center space-x-1 text-xs text-gray-500">
-            <Badge variant={metrics.volatility > 0.1 ? "destructive" : metrics.volatility > 0.05 ? "default" : "secondary"} className="text-xs">
+          <div className="flex items-center space-x-1 text-xs mt-1">
+            <Badge variant={metrics.volatility > 0.1 ? "destructive" : metrics.volatility > 0.05 ? "default" : "secondary"} className="text-xs font-medium">
               {metrics.volatility > 0.1 ? "High" : metrics.volatility > 0.05 ? "Medium" : "Low"}
             </Badge>
-            <span>20-period</span>
+            <span className="text-gray-500 font-medium">20-period</span>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Market Cap */}
       <Card className="md:col-span-2">

@@ -48,6 +48,13 @@ export function NavBar({ scroll = false }: NavBarProps) {
         large={documentation}
       >
         <div className="flex gap-6 md:gap-10">
+          <div className="hidden md:flex items-center">
+            <div className="bg-primary/10 px-3 py-1 rounded-full flex items-center gap-2 border border-primary/20">
+              <span className="size-2 bg-primary rounded-full animate-pulse"></span>
+              <span className="text-sm font-semibold text-primary">Gold: $2,431.50</span>
+              <span className="text-xs text-green-600">+0.3%</span>
+            </div>
+          </div>
           <Link href="/" className="flex items-center space-x-1.5">
             <Icons.logo />
             <span className="font-urban text-xl font-bold">

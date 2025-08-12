@@ -9,8 +9,13 @@ import { LivePriceTicker } from "@/components/gold/live-price-ticker";
 
 export default async function HeroLanding() {
   return (
-    <section className="space-y-6 py-12 sm:py-20 lg:py-20 bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
-      <div className="container flex max-w-5xl flex-col items-center gap-5 text-center">
+    <section className="space-y-6 py-12 sm:py-20 lg:py-20 bg-gradient-to-br from-yellow-100 via-white to-yellow-50 relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-yellow-400 blur-3xl"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 rounded-full bg-yellow-600 blur-3xl"></div>
+        <div className="absolute bottom-20 left-1/3 w-40 h-40 rounded-full bg-yellow-500 blur-3xl"></div>
+      </div>
+      <div className="container flex max-w-5xl flex-col items-center gap-5 text-center relative z-10">
         <Link
           href="/trading"
           className={cn(

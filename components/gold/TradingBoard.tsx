@@ -149,12 +149,12 @@ export function TradingBoard() {
           )}
 
           <div className="flex space-x-2">
-            <Button size="sm" className="flex-1">
-              <MessageSquare className="h-4 w-4 mr-1" />
+            <Button size="sm" className="flex-1" variant="gold">
+              <MessageSquare className="size-4 mr-1" />
               Contact
             </Button>
-            <Button size="sm" variant="outline">
-              <Phone className="h-4 w-4 mr-1" />
+            <Button size="sm" variant="goldOutline">
+              <Phone className="size-4 mr-1" />
               Call
             </Button>
           </div>
@@ -216,11 +216,11 @@ export function TradingBoard() {
           )}
 
           <div className="flex space-x-2">
-            <Button size="sm" className="flex-1">
-              <MessageSquare className="h-4 w-4 mr-1" />
+            <Button size="sm" className="flex-1" variant="gold">
+              <MessageSquare className="size-4 mr-1" />
               Contact Buyer
             </Button>
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="goldOutline">
               Submit Offer
             </Button>
           </div>
@@ -273,8 +273,8 @@ export function TradingBoard() {
               {/* Action Buttons */}
               <Dialog open={showListingForm} onOpenChange={setShowListingForm}>
                 <DialogTrigger asChild>
-                  <Button>
-                    <DollarSign className="h-4 w-4 mr-2" />
+                  <Button variant="gold" className="shadow-md">
+                    <DollarSign className="size-4 mr-2" />
                     List Gold
                   </Button>
                 </DialogTrigger>
@@ -297,7 +297,7 @@ export function TradingBoard() {
 
           <Dialog open={showRequestForm} onOpenChange={setShowRequestForm}>
             <DialogTrigger asChild>
-              <Button variant="outline">Post Request</Button>
+              <Button variant="goldOutline">Post Request</Button>
             </DialogTrigger>
             <DialogContent className="max-w-2xl">
               <DialogHeader>
